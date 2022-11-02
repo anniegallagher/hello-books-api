@@ -12,7 +12,7 @@ def validate_model(cls, model_id):
 
     model = cls.query.get(model_id)
 
-    if not book:
+    if not model:
         abort(make_response({"message":f"{cls.__name__} {model_id} not found"}, 404))
 
     return model
