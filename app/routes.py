@@ -10,12 +10,12 @@ def validate_model(cls, model_id):
     except:
         abort(make_response({"message":f"{cls.__name__} {model_id} invalid"}, 400))
 
-    book = cls.query.get(model_id)
+    model = cls.query.get(model_id)
 
     if not book:
         abort(make_response({"message":f"{cls.__name__} {model_id} not found"}, 404))
 
-    return book
+    return model
 
 @books_bp.route("", methods=["POST"])
 def create_book():
