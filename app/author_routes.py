@@ -33,7 +33,9 @@ def read_all_authors():
 @authors_bp.route("/<author_id>/books", methods=["POST"])
 def create_book(author_id):
     author = validate_model(Author, author_id)
+
     request_body = request.get_json()
+    
     new_book = Book(
         title=request_body["title"],
         description=request_body["description"],
