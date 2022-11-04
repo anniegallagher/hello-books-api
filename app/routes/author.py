@@ -4,7 +4,7 @@ from app.models.book import Book
 from flask import Blueprint, jsonify, abort, make_response, request
 from app.routes.book import validate_model
 
-bp = Blueprint("bp", __name__, url_prefix="/authors")
+bp = Blueprint("author_bp", __name__, url_prefix="/authors")
 
 @bp.route("", methods=["POST"])
 def create_author():
