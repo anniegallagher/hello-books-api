@@ -46,3 +46,19 @@ def create_book(author_id):
     db.session.commit()
 
     return make_response(jsonify(f"Book {new_book.title} by {new_book.author.name} successfully created"), 201)
+
+@authors_bp.route("/<author_id>/books", methods=["GET"])
+def read_all_author_books(author_id):
+    
+    author = validate_model(Author, author_id)
+
+    books_response = []
+    for book in author.books:
+        books_response.append(
+            {
+                "id": book.id,
+                "title": book.title,
+                "description": book.description
+            }
+        )
+    return jsonify(books_response)
